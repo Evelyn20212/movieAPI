@@ -4,6 +4,7 @@ const axios = require("axios");
 
 //GET home page
 router.get("/", (req, res) => {
+  // TMDB api: https://api.themoviedb.org/3/discover/movie
   axios
     .get("discover/movie")
     .then((response) => {

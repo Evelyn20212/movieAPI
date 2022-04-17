@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-//get homepage
+//get single movie
 router.get("/", (req, res, next) => {
-  res.send("hello");
+  res.render("singleMovie", {
+    title: "Single movie",
+  });
 });
 
 module.exports = router;
