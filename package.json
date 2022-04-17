@@ -1,5 +1,32 @@
 {
   "dependencies": {
-    "nodemon": "^2.0.15"
-  }
+    "axios": "^0.26.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7"
+  },
+  "name": "movieapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon -e js,ejs,css index"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evelyn20212/movieAPI.git"
+  },
+  "author": "Evelyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evelyn20212/movieAPI/issues"
+  },
+  "homepage": "https://github.com/Evelyn20212/movieAPI#readme",
+  "description": ""
 }
