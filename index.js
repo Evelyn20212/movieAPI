@@ -12,8 +12,8 @@ const path = require("path");
 
 //axios
 const axios = require("axios");
-axios.default.baseURL = "https://api.themoviedb.org/3/";
-axios.default.params = {
+axios.defaults.baseURL = "https://api.themoviedb.org/3/";
+axios.defaults.params = {
   api_key: process.env.TMDB_API_KEY,
   include_adult: false,
 };
@@ -35,8 +35,8 @@ const moviesRouter = require("./routes/movies");
 app.use("/movies", moviesRouter);
 
 //API routes
-app.use("/API/movies", require("./routes/API/allMoviesAPI"));
-app.use("/API/singleMovie", require("./routes/API/singleMovieAPI"));
+app.use("/api/movies", require("./routes/API/allMoviesAPI"));
+app.use("/api/single-movie", require("./routes/API/singleMovieAPI"));
 
 app.listen(port, () => {
   console.log(`Example app listening on http ://localhost:${port}/`);

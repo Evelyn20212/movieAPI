@@ -7,7 +7,8 @@
     "express": "^4.17.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg-promise": "^10.11.1"
   },
   "name": "movieapi",
   "version": "1.0.0",
@@ -15,9 +16,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
-    "dev": "nodemon -e js,ejs,css index"
+    "dev": "nodemon -e js,ejs,css index",
+    "create_db": "psql -U postgres -f sql/create_db.sql",
+    "create_tables": "psql -U postgres -d movieAPI -f sql/create_tables.sql",
+    "seed_tables": "psql -U postgres -d movieAPI -f sql/seed_tables.sql"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Evelyn20212/movieAPI.git"
