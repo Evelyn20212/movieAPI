@@ -16,4 +16,17 @@ router.get("/", (req, res) => {
     });
 });
 
+// @path /api/all-movies/:page
+router.get("/:page", (req, res) => {
+  // TMDB api: https://api.themoviedb.org/3/discover/movie?page={page}
+  axios
+    .get("discover/movie", { params: { page: req.params.page } })
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(err);
+    });
+});
 module.exports = router;

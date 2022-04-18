@@ -1,46 +1,50 @@
-<%- include('./partials/head.ejs') %>
-<body>
+
+  <%- include('./partials/head.ejs') %>
+ <body>
  <%- include('./partials/nav.ejs') %>
-    <div class="container">
-      <h1>Movie Page</h1>
-
-      <a class="waves-effect waves-light btn" href="/movies">Home page</a>
-      <a class="waves-effect waves-light btn" id="random">Random page</a>
-      <ul class="pagination">
-        <li class="waves-effect" id="prevPage"><a href="#!"><</a></li>
-        <li class="active teal" ><a href="#!" id="page-number">1</a></li>
-        <li class="waves-effect" id="nextPage"><a href="#!">></a></li>
-      </ul>
-
-
-      <div class="input-field col s12">
-        <select id="sort">
-          <option value="" disabled selected>Choose your option</option>
-          <option value="popularity.desc">Popularity</option>
-          <option value="revenue.desc">Revenue</option>
-          <option value="release_date.asc">Release Date</option>
-        </select>
-        <label>Sort function</label>
-      </div>
-
-      <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
+    <div class="container" id="movie-details">
+      <h1 id="title"></h1>
+      <div class="row">
+        <div class="col s5">
+          <img id="poster" />
         </div>
+        <div class="col s5" id="details">
+          <h4 id="year"></h4>
+          <div id="genres"></div>
+          <p id="synopsis"></p>
+          <div id ="comments">
+            <form id="comment-form" method="POST" action="/movies/<%= movie_id %> ">
+              <div class="input-field col s6">
+                <input id="comment" type="text" name="comment" />
+                <label class="active" for="comment">Write comment here:</label>
+                <button
+                  class="btn waves-effect waves-light left-align"
+                  type="submit"
+                  name="action"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
       </div>
-      <div id="movies" class="row">
-
+      <div id="comment-body" class="col s5">
+        <% if (typeof comments != 'undefined') { %>
+            <% const commentLimit = comments.length > 7 ? 7 : comments.length %>
+            <% for (let i = 0; i < commentLimit; i++) { %>
+              <div>
+                <p><strong><%= comments[i].comment %></strong></p>
+                <p><%= comments[i].created_at %></p>
+              </div>
+            <% } %>
+          <% } %>
       </div>
     </div>
     <%- include('./partials/footer.ejs') %>
+    
+    <script>
+         const id = <%= movie_id %>
+    </script>
     <!-- Our JavaScript -->
-    <!-- <script src="/js/apiConfig.js"></script> -->
-    <script src="/js/movies.js"></script>
+    <script src="/js/singleMovie.js"></script>
   </body>
-</html>
