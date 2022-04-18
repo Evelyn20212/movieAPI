@@ -34,7 +34,7 @@ $("#random").click(() => {
 function getMovies(page) {
   $("#movies").empty();
   $("#movies").hide();
-  $.getJSON("/api/all-movies/" + page)
+  $.getJSON("/api/movies/" + page)
     .then((data) => {
       const { results } = data;
       console.log(data);

@@ -16,6 +16,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 axios.defaults.params = {
   api_key: process.env.TMDB_API_KEY,
   include_adult: false,
+  page: 1,
 };
 // Body parser
 app.use(express.urlencoded({ extended: true }));
@@ -30,13 +31,15 @@ app.use(express.static(path.join(__dirname, "public")));
 //Routes
 const singleMovieRouter = require("./routes/singleMovie");
 app.use("/singleMovie", singleMovieRouter);
-
 const moviesRouter = require("./routes/movies");
 app.use("/movies", moviesRouter);
+// const searchRouter = require("./routes/search");
+// app.use("/search", searchRouter);
 
 //API routes
 app.use("/api/movies", require("./routes/API/allMoviesAPI"));
 app.use("/api/single-movie", require("./routes/API/singleMovieAPI"));
+// app.use("/api/search", require("./routes/API/searchAPI"));
 
 app.listen(port, () => {
   console.log(`Example app listening on http ://localhost:${port}/`);

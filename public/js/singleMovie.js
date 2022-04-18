@@ -4,9 +4,16 @@
 // https://api.themoviedb.org/3/movie/634649?api_key=12890aac4bd3d481725b4e373193a5bf&language=en-US
 // https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
 // https://image.tmdb.org/t/p/w300/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg
-let IMAGE_URL = "http://image.tmdb.org/t/p/w500/";
+$(document).ready(function () {
+  console.log("ready");
+  $("select").formSelect();
+  getMovies(page);
+});
+
+let IMAGE_URL = "http://image.tmdb.org/t/p/w500";
 $.getJSON("/api/single-movie/" + id)
   .then((movie) => {
+    console.log(IMAGE_URL + movie.poster_path);
     $("#movie-details").hide();
     $("#title").text(movie.title);
     $("#tagline").text(movie.tagline);
