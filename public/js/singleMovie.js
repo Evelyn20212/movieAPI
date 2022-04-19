@@ -10,7 +10,7 @@ $(document).ready(function () {
   getMovies(page);
 });
 
-let IMAGE_URL = "http://image.tmdb.org/t/p/w500";
+let IMAGE_URL = "http://image.tmdb.org/t/p/w500/";
 $.getJSON("/api/single-movie/" + id)
   .then((movie) => {
     console.log(IMAGE_URL + movie.poster_path);

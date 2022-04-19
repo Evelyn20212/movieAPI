@@ -1,5 +1,6 @@
 let IMAGE_URL = "http://image.tmdb.org/t/p/w500";
 let page = 1;
+let sort = "most-popular";
 
 $(document).ready(function () {
   console.log("ready");
@@ -9,9 +10,9 @@ $(document).ready(function () {
 
 // Sorting
 $("#sort").change(function () {
+  page = 1;
   console.log($("#sort").val());
-  apiOptions["sort_by"] = $("#sort").val();
-  console.log(apiOptions);
+  sort = $("#sort").val();
   getMovies();
 });
 
@@ -34,7 +35,7 @@ $("#random").click(() => {
 function getMovies(page) {
   $("#movies").empty();
   $("#movies").hide();
-  $.getJSON("/api/movies/" + page)
+  $.getJSON("/api/movies/" + sort + "/" + page)
     .then((data) => {
       const { results } = data;
       console.log(data);

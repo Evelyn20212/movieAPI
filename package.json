@@ -19,8 +19,8 @@
     "start": "node index",
     "dev": "nodemon -e js,ejs,css index",
     "create_db": "psql -U postgres -f sql/create_db.sql",
-    "create_tables": "psql -U postgres -d movieAPI -f sql/create_tables.sql",
-    "seed_tables": "psql -U postgres -d movieAPI -f sql/seed_tables.sql"
+    "create_tables": "psql -U postgres -d movieapi -f sql/create_tables.sql",
+    "seed_tables": "psql -U postgres -d movieapi -f sql/seed_tables.sql"
   },
   "repository": {
     "type": "git",
